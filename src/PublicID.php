@@ -8,35 +8,35 @@ class PublicID
 {
 	/**
 	 * Generate a public ID table column.
-	 * 
+	 *
 	 * @param  Blueprint $table Table object
-	 * @return void
+	 * @return Blueprint $table Table object
 	 */
 	public static function column(Blueprint $table)
 	{
 		$key = config('public-id.key', 'public_id');
 		$size = config('public-id.size', 10);
 
-		$table->string($key, $size)->unique();
+		return $table->string($key, $size)->unique();
 	}
 
 	/**
 	 * Update a table column to the new size.
-	 * 
+	 *
 	 * @param  Blueprint $table Table object
-	 * @return void
+	 * @return Blueprint $table Table object
 	 */
 	public static function update(Blueprint $table)
 	{
 		$key = config('public-id.key', 'public_id');
 		$size = config('public-id.size', 10);
 
-		$table->string($key, $size)->unique()->change();
+		return $table->string($key, $size)->unique()->change();
 	}
 
 	/**
 	 * Generate unique public ID.
-	 * 
+	 *
 	 * @return string Public ID
 	 */
 	public static function generate()
